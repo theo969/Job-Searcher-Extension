@@ -1,0 +1,969 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+ul,
+ol {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  width: 100%;
+  max-width: 100%;
+}
+
+body {
+  background-color: #eee;
+}
+
+.header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  transition: all 0.5s ease-in-out;
+}
+
+.scroll-down .header {
+  top: -156px;
+}
+
+header {
+  background-color: white;
+  display: flex;
+  padding: 30px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+header > .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 35px;
+}
+
+header > .container .left a {
+  font-size: 25px;
+  letter-spacing: 1.1px;
+  font-weight: 700;
+  text-shadow: 6px 6px 10px rgba(150, 150, 150, 0.49);
+}
+
+header > .container .left .leftSide > .menuToggle {
+  display: none;
+}
+
+.left .categories {
+  display: none;
+}
+
+.arrowDownIcon {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background-color: grey;
+  width: 12px;
+  height: 12px;
+  rotate: -180deg;
+  transform: translateY(-1px);
+}
+
+header > .container .searchForm {
+  height: 100%;
+  width: 83%;
+  display: flex;
+  align-items: center;
+}
+
+header > .container .searchForm form {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  border-radius: 20px;
+  border: 1px solid rgb(221, 221, 221);
+}
+
+header > .container .searchForm form input {
+  width: 100%;
+  padding: 9px 20px;
+  outline: none;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border: none;
+}
+
+header > .container .searchForm form button {
+  padding: 0 12px;
+  background-color: rgb(245, 245, 245);
+  padding: 0 20px 0 15px;
+  border: none;
+  border-left: none;
+  cursor: pointer;
+  transition: background-color 0.5s ease-in-out;
+  font-size: 15px;
+  height: 100%;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+header > .container .searchForm form button:hover {
+  background-color: #ddd;
+}
+
+.autocompleteList {
+  display: none;
+  position: absolute;
+  z-index: 10;
+  background-color: white;
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocompleteList.display {
+  display: block;
+}
+
+.autocompleteList .list {
+  cursor: pointer;
+  padding: 13px;
+  font-size: 14px;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.autocompleteList .list:hover {
+  background-color: #eee;
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.account a {
+  transition: color 0.5s ease-in;
+}
+
+.account a:hover {
+  color: rgb(25, 117, 179);
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid rgb(221, 221, 221);
+  border-bottom: 1px solid rgb(221, 221, 221);
+  background-color: white;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+nav ul li {
+  display: flex;
+  align-items: center;
+  height: 54px;
+  padding: 0 15px;
+  transition: background-color 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+nav ul li:hover {
+  background-color: #ddd;
+}
+
+main {
+  margin-top: 154px;
+}
+
+.dropdown {
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+}
+
+.dropdown .dropdownHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 12px;
+  border: 2px solid rgb(228, 228, 228);
+}
+
+.dropdown .dropdownValues {
+  position: absolute;
+  background-color: white;
+  left: 0;
+  right: 0;
+  top: 34.89px;
+  border: 2px solid rgb(228, 228, 228);
+  border-top: none;
+  font-size: 14px;
+  display: none;
+  flex-direction: column;
+  z-index: 55;
+  width: 100%;
+}
+
+.dropdown.active .dropdownValues {
+  display: flex;
+}
+
+.dropdown .dropdownValues .dropdownValue {
+  transition: background-color 0.5s ease-in-out;
+  padding: 10px;
+  width: calc(100% + 2px);
+}
+
+.dropdown .dropdownValues .dropdownValue:hover {
+  background-color: #dddddd;
+}
+
+.dropdown .dropdownValues .dropdownValue.mainDropdownValue {
+  background-color: #dddddd;
+}
+
+.dropdown
+  .dropdownValues
+  .dropdownValue:hover
+  .dropdownValue.mainDropdownValue {
+  background-color: white;
+}
+
+.banner {
+  background-color: white;
+  padding: 100px 40px;
+}
+
+.banner > .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 100px;
+  height: 100%;
+}
+
+.banner > .container .bannerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.banner > .container h2 {
+  font-size: 37px;
+}
+
+.banner > .container span {
+  font-size: 20px;
+}
+
+.banner > .container p {
+  max-width: 500px;
+  line-height: 45px;
+  font-size: 20px;
+}
+
+.bannerPicture {
+  width: 50%;
+  max-width: 525px;
+}
+
+.works {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 30px;
+}
+
+.works > .container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.works > .container h2 {
+  font-size: 31px;
+}
+
+.works > .container ol {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  list-style-type: none;
+}
+
+.works > .container ol li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 250px;
+  text-align: center;
+}
+
+.works > .container ol li .steps {
+  position: relative;
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+  color: gray;
+  border-radius: 50%;
+}
+
+.works > .container ol li .step1::after,
+.works > .container ol li .step2::after {
+  content: '';
+  width: 290px;
+  background-color: white;
+  height: 3px;
+  top: 22.5px;
+  left: 45px;
+  position: absolute;
+}
+
+.works > .container ol li p {
+  line-height: 35px;
+}
+
+.trendingJobs {
+  background-color: white;
+  padding: 100px 40px;
+}
+
+.trendingJobs > .container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.trendingJobs > .container h2 {
+  font-size: 35px;
+}
+
+.trendingJobs > .container > ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minMax(450px, auto));
+  gap: 30px;
+}
+
+.trendingJobs > .container > ul > li {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: rgb(250, 250, 250);
+  padding: 40px;
+  /* max-width: 500px; */
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.trendingJobs > .container > ul > li:hover {
+  background-color: rgb(240, 240, 240);
+}
+
+.trendingJobs > .container > ul > li:hover .jobInfoList li {
+  background-color: rgb(250, 250, 250);
+}
+
+.jobInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.jobTitle {
+  font-size: 25px;
+}
+
+.jobInfoList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+}
+
+.jobInfoList li {
+  transition: background-color 0.5s ease-in-out;
+  background-color: #f1f1f1;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.jobDescription {
+  line-height: 38px;
+}
+
+.applyNow {
+  transition: background-color 0.5s ease-in-out;
+  width: fit-content;
+  padding: 15px 20px;
+  font-size: 17px;
+  border: none;
+  background-color: rgb(0, 140, 255);
+  color: white;
+  font-weight: 600;
+  border-radius: 15px;
+  margin-top: auto;
+  cursor: pointer;
+}
+
+.applyNow:hover {
+  background-color: rgb(0, 80, 145);
+}
+
+.trendingJobs > .container > a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: background-color 0.5s ease-in-out;
+  color: white;
+  width: fit-content;
+  padding: 13px 20px;
+  font-size: 18px;
+  margin: 15px auto;
+  background-color: black;
+}
+
+.arrowLeftIcon {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background-color: white;
+  width: 12px;
+  height: 12px;
+  rotate: 90deg;
+  transform: translateY(-1px);
+}
+
+.trendingJobs > .container > a:hover {
+  background-color: rgb(0, 140, 255);
+}
+
+.login > .container,
+.sign_up > .container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 70px 30px;
+}
+
+.login > .container h2,
+.sign_up > .container h2 {
+  font-size: 27px;
+  margin-bottom: 30px;
+}
+
+.sign_up > .container form {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 20px;
+}
+
+.login > .container form .input-form,
+.sign_up > .container form .input-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+}
+
+.login > .container form .input-form input,
+.sign_up > .container form .input-form input {
+  border: 1px solid rgb(209, 209, 209);
+  padding: 10px 15px;
+  width: 350px;
+  outline: none;
+}
+
+.loginButton,
+.signUpButton {
+  grid-column: 1 / 3;
+  padding: 15px 35px;
+  border: none;
+  background-color: rgb(209, 66, 0);
+  color: white;
+  font-size: 15px;
+  border-radius: 30px;
+  margin: 20px auto;
+  cursor: pointer;
+  width: fit-content;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.signUpButton:hover {
+  background-color: rgb(255, 87, 9);
+}
+
+.login > .container p a,
+.sign_up > .container p a {
+  color: rgb(209, 66, 0);
+  font-weight: bold;
+}
+
+.login > .container p a:hover,
+.sign_up > .container p a:hover {
+  text-decoration: underline;
+}
+
+.login > .container form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.loginButton {
+  margin: 0 auto 20px;
+  background-color: rgb(0, 136, 247);
+}
+
+.loginButton:hover {
+  background-color: rgb(2, 80, 145);
+}
+
+.login > .container p a {
+  color: rgb(0, 136, 247);
+}
+
+.resultSearch {
+  padding: 100px 40px;
+}
+
+.resultSearch > .container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.resultSearch > .container h2 {
+  font-size: 30px;
+}
+
+.resultSearch > .container .result {
+  display: grid;
+  column-gap: 40px;
+  grid-template-columns: minmax(auto, 310px) auto;
+  grid-template-areas: 'filters resultContent resultContent';
+}
+
+.resultSearch > .container .result aside {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 40px 30px;
+  background-color: rgb(253, 253, 253);
+  height: fit-content;
+  grid-area: 'filters';
+}
+
+.resultSearch > .container .result aside h3 {
+  color: rgb(58, 58, 58);
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.resultSearch > .container .result aside .filters {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.resultSearch > .container .result aside .filters > li {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-bottom: 20px;
+  border-bottom: rgb(228, 228, 228) 2px solid;
+}
+
+.resultSearch > .container .result aside .filters > li:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.resultSearch > .container .result aside .filters li span {
+  font-size: 14px;
+  color: #121212;
+}
+
+.resultSearch > .container .result aside .filters li > ul li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  color: #121212;
+}
+
+.resultSearch
+  > .container
+  .result
+  aside
+  .filters
+  li
+  > ul
+  li
+  input[type='radio'] {
+  transform: translateY(1px);
+}
+
+.resultSearch > .container .result aside .filters li .selectedSkillsTitle {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.resultSearch > .container .result aside .filters li .selectedSkills {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 13px;
+}
+
+.resultSearch
+  > .container
+  .result
+  aside
+  .filters
+  li
+  .selectedSkills
+  .selectedSkill {
+  background-color: rgb(207, 244, 255);
+  padding: 5px 10px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.resultSearch > .container .result .content {
+  grid-area: 'resultContent';
+}
+
+.resultSearch > .container .result .content .jobs {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.resultSearch > .container .result .content .jobs .jobCard {
+  position: relative;
+  width: 100%;
+  padding: 30px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.resultSearch > .container .result .content .jobs .jobCard h2 {
+  font-size: 25px;
+}
+
+.resultSearch > .container .result .content .jobs .jobCard .jobCardInfo {
+  margin: 6px 0;
+  display: flex;
+  gap: 15px;
+  color: #3b3b3b;
+  list-style-type: disc;
+  font-size: 15px;
+}
+
+.resultSearch > .container .result .content .jobs .jobCard .jobCardInfo li {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.bullet {
+  width: 8px;
+  height: 8px;
+  background-color: #3b3b3b;
+  border-radius: 50%;
+}
+
+.resultSearch > .container .result .content .jobs .jobCard .jobCardDescription {
+  font-size: 15px;
+  color: #3b3b3b;
+  line-height: 28px;
+  margin: 6px 0;
+}
+
+.resultSearch > .container .result .content .jobs .jobCard .skills {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.resultSearch > .container .result .content .jobs .jobCard .skills .skillLists {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  gap: 15px;
+}
+
+.resultSearch
+  > .container
+  .result
+  .content
+  .jobs
+  .jobCard
+  .skills
+  .skillLists
+  li {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: #3b3b3b;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+}
+
+.resultSearch > .container .result .content .jobs .jobCard .jobCardApplyNowBtn {
+  margin: 20px 0 6px;
+  padding: 10px 20px;
+  font-size: 14px;
+  background-color: rgb(199, 2, 67);
+}
+
+.resultSearch
+  > .container
+  .result
+  .content
+  .jobs
+  .jobCard
+  .jobCardApplyNowBtn:hover {
+  background-color: rgb(226, 25, 92);
+}
+
+.resultSearch > .container .result .content .jobs .jobCard .jobCardSalary {
+  position: absolute;
+  right: 30px;
+  bottom: 40px;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  padding: 30px;
+  justify-content: center;
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+footer h3 {
+  font-weight: 500;
+  line-height: 30px;
+}
+
+@media (max-width: 992px) {
+  .account {
+    display: none;
+  }
+
+  header {
+    transition: filter 0.3s ease-in-out;
+    border-bottom: 1px solid rgb(221, 221, 221);
+  }
+
+  header.onScroll {
+    filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.1));
+    border-bottom: none;
+  }
+
+  header > .container {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  header > .container .left {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  header > .container .left a {
+    text-shadow: none;
+  }
+
+  header > .container .left .leftSide {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .left .categories {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+  }
+
+  header > .container .left .leftSide > .menuToggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+
+  .left .leftSide .menuToggle span {
+    background-color: #121212;
+    border-radius: 2px;
+    box-shadow: 0 1px 1px #00000067;
+    width: 30px;
+    height: 4px;
+  }
+
+  header > .container .searchForm {
+    width: 100%;
+  }
+
+  nav {
+    display: none;
+    position: absolute;
+    max-width: 200px;
+    padding: 15px 0;
+    border: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    right: 30px;
+    top: 80px;
+    background-color: whitesmoke;
+    font-size: 15px;
+    z-index: 44;
+  }
+
+  nav ul {
+    gap: 15px;
+  }
+
+  nav ul li {
+    height: 40px;
+    padding: 0 10px;
+    border-radius: 5px;
+  }
+
+  nav.active {
+    display: flex;
+    animation: linear 0.2s alternate navAnimation;
+  }
+
+  @keyframes navAnimation {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  main {
+    margin-top: 158px;
+  }
+
+  .banner {
+    padding: 50px 30px;
+  }
+
+  .banner > .container h2 {
+    font-size: 30px;
+  }
+
+  .banner > .container span {
+    font-size: 17px;
+  }
+
+  .banner > .container p {
+    font-size: 17px;
+  }
+
+  .banner img {
+    display: none;
+  }
+
+  .works > .container ol li {
+    background-color: rgb(250, 250, 250);
+    padding: 25px;
+    border-radius: 10px;
+  }
+
+  .works > .container ol li .steps {
+    background-color: #121212;
+    color: white;
+  }
+
+  .works > .container ol li .step1::after,
+  .works > .container ol li .step2::after {
+    content: unset;
+  }
+
+  .trendingJobs {
+    padding: 100px 30px;
+  }
+
+  .trendingJobs > .container h2 {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .trendingJobs > .container > ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .trendingJobs > .container > ul > li {
+    padding: 22px;
+    font-size: 87%;
+  }
+
+  .jobTitle {
+    font-size: 21px;
+  }
+
+  .applyNow {
+    font-size: 14.5px;
+    padding: 10px 15px;
+    border-radius: 0;
+  }
+
+  .trendingJobs > .container > a {
+    font-size: 14px;
+    padding: 10px 25px;
+    border-radius: 30px;
+  }
+
+  footer h3 {
+    font-size: 14px;
+  }
+}

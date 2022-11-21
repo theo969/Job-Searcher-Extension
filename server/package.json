@@ -1,0 +1,22 @@
+{
+  "name": "jse-server",
+  "version": "1.0.0",
+  "description": "All jobs that has been scraped will be sent to this server",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "migrate": "npx knex migrate:latest --knexfile database/knexfile.js"
+  },
+  "author": "Sayyid Muhammad A",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "knex": "^2.3.0",
+    "nodemon": "^2.0.20",
+    "pg": "^8.8.0",
+    "scraperapi-sdk": "^1.0.6"
+  }
+}
