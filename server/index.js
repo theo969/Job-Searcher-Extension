@@ -3,43 +3,42 @@ const scraperapiClient = require('scraperapi-sdk')('640f5653ec6f56842328ec5b31a1
 const scrapeJobDetail = require('./utils/indeed/jobDetail/scrapeDetail');
 const scrapeFunc = require('./utils/indeed/scrape');
 const jobController = require('./controller/job');
-const compression = require('compression');
 const PORT = 8080;
 const app = express();
 
-app.use(compression())
 app.use(express.json()) // use middleware
 app.listen(PORT, () => console.log(`Running on port ${PORT}`));
 
-let result = []; // this variable will contain the data that will be taken form indeed
-let dataFromDB = []; // this variable similar to result this variable will contain all jobs that have been scraped from indeed to postgresql
-let scrapeDetailResult = {};
-let id = 1;
+let result = []; // this variable will contain the data that will be taken form indeed(jobs)
+let jobsFromDB = []; // this variable similar to result this variable will contain all jobs that have been added to postgresql if the scraper running to some error
+let scrapeDetailResult = {}; // this variable will contain the detail of a job
 
-app.get('/jobsIndeed/', (req, res) => {
+try {
   jobController.fetchJob().then(res => {
-    dataFromDB = res.filter(el => el.id !== undefined && el.jobTitle !== '');
-    // res.forEach(data => { this one could be error if you want directly fetch the data using this id because actually in the backend the id start from 600 or 500 so i change from 1
-    //   data.id = id;
-    //   dataFromDB.push(data);
-    //   id++;
-    // })
-    console.log(dataFromDB);
+    jobsFromDB = res.filter(el => el.id !== undefined && el.jobTitle !== '');
+    console.log("Successfully getting data from DB");
   });
 
   scraperapiClient.get('https://www.indeed.com/jobs?q=Front+end+developer')
     .then(res => {
-      scrapeFunc(res, result)
+      console.log("Start scraping all jobs from indeed")
+      scrapeFunc(res, result);
+      console.log("Done!")
     });
+} catch (err) {
+  console.error(err)
+}
 
-  res.send(result.length !== 0 ? result : dataFromDB);
+app.get('/jobsIndeed/', (req, res) => {
+  res.send(result.length !== 0 ? result : jobsFromDB);
 });
 
 app.get('/jobsIndeed/detail/:jobDetailId', (req, res) => {
-  if (req.params.jobDetailId === scrapeDetailResult.jobId) return;
   console.log(req.params.jobDetailId)
   scraperapiClient.get(`https://www.indeed.com/viewjob?jk=${req.params.jobDetailId}`).then(res => {
+    console.log("Start to scrape the job detail")
     scrapeJobDetail(res, scrapeDetailResult, req.params.jobDetailId);
+    console.log("Done!")
   });
   if (Object.keys(scrapeDetailResult).length !== 0) {
     res.send(scrapeDetailResult)

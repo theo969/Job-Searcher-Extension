@@ -4,7 +4,6 @@ class JobController {
   async createJob(jobData) {
     try {
       const job = await jobService.createJob(jobData);
-      console.log("Job has been created!")
       return job;
     } catch (error) {
       console.error(error)

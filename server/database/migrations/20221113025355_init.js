@@ -10,6 +10,7 @@ exports.up = function (knex) {
     table.string('companyLocation').notNullable()
     table.specificType('jobsInfo', 'text ARRAY');
     table.specificType('jobDescription', 'text ARRAY');
+    table.string('applyLink').notNullable()
     table.string('jobDetail').notNullable()
     table.string('jobId').notNullable()
   })

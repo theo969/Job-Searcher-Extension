@@ -2,7 +2,6 @@ const cheerio = require('cheerio')
 
 function scrapeIndeedJobDetail(response, result, id) {
   try {
-    console.log("Getting the job detail....")
     let $ = cheerio.load(response);
     let jobInfo = {};
     let jobType = [];
@@ -12,8 +11,12 @@ function scrapeIndeedJobDetail(response, result, id) {
     jobInfo.jobTitle = $('.jobsearch-JobInfoHeader-title').text().trim();
     jobInfo.companyName = $('.jobsearch-InlineCompanyRating-companyHeader > a').text().trim();
     jobInfo.companyLocation = $('.icl-u-xs-mt--xs.icl-u-textColor--secondary.jobsearch-JobInfoHeader-subtitle.jobsearch-DesktopStickyContainer-subtitle > div:nth-child(2)').text().trim()
-    $('#jobDetailsSection > .jobsearch-JobDescriptionSection-sectionItem.jobsearch-JobDetailsSection-sectionItem--preferenceMatch:nth-child(3) > .jobsearch-JobDetailsSection-attribute').each((i, el) => {
-      jobType.push($(el).html().trim())
+    $('#jobDetailsSection .jobsearch-JobDescriptionSection-sectionItem > div').each((i, el) => {
+      if ($(el).text().trim() === 'Job Type') {
+        $(el).nextAll().each((i, el) => {
+          jobType.push($(el).text().trim())
+        })
+      }
     })
     if ($('#salaryInfoAndJobType > .icl-u-xs-mr--xs.attribute_snippet').text().trim()) {
       salaryInfo.push($('#salaryInfoAndJobType > .icl-u-xs-mr--xs.attribute_snippet').text().trim())
@@ -30,8 +33,6 @@ function scrapeIndeedJobDetail(response, result, id) {
     result.jobDescription = jobDescription;
     result.jobDate = jobDate;
     result.jobId = id;
-    console.log("Getting the job detail done")
-    console.log(result);
     return result;
   } catch (error) {
     console.error(error)

@@ -35,15 +35,13 @@ function scrapeIndeedJobs(response, result) {
         companyLocation: companyInfo.companyLocation,
         jobsInfo,
         jobDescription,
-        jobDetail: `https://www.indeed.com/viewjob?jk=${$(el).find('.resultContent div > h2 > a').attr('data-jk')}&tk`,
+        applyLink: `https://www.indeed.com/viewjob?jk=${$(el).find('.resultContent div > h2 > a').attr('data-jk')}&tk`,
+        jobDetail: `http://localhost:8080/jobsIndeed/detail/${$(el).find('.resultContent div > h2 > a').attr('data-jk')}`,
         jobId: $(el).find('.resultContent div > h2 > a').attr('data-jk') || 0,
       }
       result.push(data);
       jobController.createJob(data)
     });
-    console.log(result)
-    dataFromDB = result;
-    console.log("Take all jobs from indeed has been successfully!")
   } catch (error) {
     console.error(error);
   }
