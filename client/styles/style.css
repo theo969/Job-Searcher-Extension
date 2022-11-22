@@ -289,8 +289,9 @@ main {
 }
 
 .bannerPicture {
-  width: 50%;
-  max-width: 525px;
+  width: 60%;
+  max-width: 500px;
+  height: 70%;
 }
 
 .works {
