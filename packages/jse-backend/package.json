@@ -5,15 +5,20 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
-    "migrate": "npx knex migrate:latest --knexfile database/knexfile.js"
+    "migrate": "npx knex migrate:latest --knexfile database/knexfile.js",
+    "new_migration": "npx knex migrate:make init --migrations-directory database/migrations"
   },
   "author": "Sayyid Muhammad A",
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "cheerio": "^1.0.0-rc.12",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "jse-jobs-scraper": "^1.2.5",
+    "jsonwebtoken": "^8.5.1",
     "knex": "^2.3.0",
     "nodemon": "^2.0.20",
     "pg": "^8.8.0",

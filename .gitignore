@@ -1,14 +1,20 @@
-/server/node_modules
-/client/node_modules
+/packages/jse-backend/node_modules
+/packages/jse-frontend/node_modules
 
-/server/.env
-/server/.env.local
+/packages/jse-backend/.env
+/packages/jse-backend/.env.local
 
-/client/.env
-/client/.env.local
+/packages/jse-frontend/.env
+/packages/jse-frontend/.env.local
 
-/server/yarn.lock
-/server/package-lock.json
+/packages/jse-backend/yarn.lock
+/packages/jse-backend/package-lock.json
 
-/client/yarn.lock
-/client/package-lock.json
+/packages/jse-frontend/yarn.lock
+/packages/jse-frontend/package-lock.json
+
+/packages/jse-jobs-scraper/yarn.lock
+/packages/jse-jobs-scraper/package-lock.json
+
+/packages/jse-jobs-scraper/node_modules
+/packages/jse-jobs-scraper/node_modules
