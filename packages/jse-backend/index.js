@@ -1,12 +1,13 @@
 const express = require('express');
-const scraperapiClient = require('scraperapi-sdk')('640f5653ec6f56842328ec5b31a16241');
-const scrapeJobDetail = require('./utils/indeed/jobDetail/scrapeDetail');
-const scrapeFunc = require('./utils/indeed/scrape');
+const { scrapeAllJobs, scrapeDetail } = require('jse-jobs-scraper')
+const registerRoute = require('./routes/register')
 const jobController = require('./controller/job');
+const cors = require("cors");
 const PORT = 8080;
 const app = express();
 
-app.use(express.json()) // use middleware
+app.use(express.json())
+app.use(cors())
 app.listen(PORT, () => console.log(`Running on port ${PORT}`));
 
 let result = []; // this variable will contain the data that will be taken form indeed(jobs)
@@ -19,15 +20,15 @@ try {
     console.log("Successfully getting data from DB");
   });
 
-  scraperapiClient.get('https://www.indeed.com/jobs?q=Front+end+developer')
-    .then(res => {
-      console.log("Start scraping all jobs from indeed")
-      scrapeFunc(res, result);
-      console.log("Done!")
-    });
+  scrapeAllJobs('https://www.indeed.com/jobs?q=Front+end+engineer&sc=0kf%3Ajt%28internship%29%3B').then(res => {
+    result = res;
+    console.log("Done!", res)
+  });
 } catch (err) {
   console.error(err)
 }
+
+app.use('/register', registerRoute)
 
 app.get('/jobsIndeed/', (req, res) => {
   res.send(result.length !== 0 ? result : jobsFromDB);
@@ -35,9 +36,9 @@ app.get('/jobsIndeed/', (req, res) => {
 
 app.get('/jobsIndeed/detail/:jobDetailId', (req, res) => {
   console.log(req.params.jobDetailId)
-  scraperapiClient.get(`https://www.indeed.com/viewjob?jk=${req.params.jobDetailId}`).then(res => {
-    console.log("Start to scrape the job detail")
-    scrapeJobDetail(res, scrapeDetailResult, req.params.jobDetailId);
+  console.log("Start to scrape the job detail")
+  scrapeDetail(req.params.jobDetailId).then(res => {
+    scrapeDetailResult = res;
     console.log("Done!")
   });
   if (Object.keys(scrapeDetailResult).length !== 0) {

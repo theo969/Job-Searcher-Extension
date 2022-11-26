@@ -8,10 +8,9 @@ exports.up = function (knex) {
     table.string('jobTitle').notNullable()
     table.string('companyName').notNullable()
     table.string('companyLocation').notNullable()
-    table.specificType('jobsInfo', 'text ARRAY');
-    table.specificType('jobDescription', 'text ARRAY');
-    table.string('applyLink').notNullable()
-    table.string('jobDetail').notNullable()
+    table.specificType('salaryInfo', 'text ARRAY');
+    table.string('snippet').notNullable()
+    table.string('detailLink').notNullable()
     table.string('jobId').notNullable()
   })
 };
