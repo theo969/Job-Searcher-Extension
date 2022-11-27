@@ -1,22 +1,22 @@
-const puppeteer = require('puppeteer-extra');
-const StealthPlugin = require('puppeteer-extra-plugin-stealth');
-const cheerio = require('cheerio');
+import puppeteer from 'puppeteer-extra';
+import StealthPlugin from 'puppeteer-extra-plugin-stealth';
+import cheerio from 'cheerio';
 puppeteer.use(StealthPlugin());
 
-async function scrapeDetail(jobId) {
+async function scrapeJobDetail(jobId: any) {
   const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
   await page.goto(`https://www.indeed.com/viewjob?jk=${jobId}`, { waitUntil: "domcontentloaded" });
 
-  const htmlCode = await page.evaluate(() => document.querySelector('*').outerHTML)
+  const htmlCode = await page.evaluate(() => document.querySelector('*')!.outerHTML)
 
   let $ = cheerio.load(htmlCode);
-  let jobType = [];
+  let jobType: string[] = [];
   let salaryInfo = [];
 
-  $('#jobDetailsSection .jobsearch-JobDescriptionSection-sectionItem > div').each((i, el) => {
+  $('#jobDetailsSection .jobsearch-JobDescriptionSection-sectionItem > div').each((_, el) => {
     if ($(el).text().trim() === 'Job Type') {
-      $(el).nextAll().each((i, el) => {
+      $(el).nextAll().each((_, el) => {
         jobType.push($(el).text().trim())
       })
     }
@@ -24,7 +24,7 @@ async function scrapeDetail(jobId) {
   if ($('#salaryInfoAndJobType > .icl-u-xs-mr--xs.attribute_snippet').text().trim()) {
     salaryInfo.push($('#salaryInfoAndJobType > .icl-u-xs-mr--xs.attribute_snippet').text().trim())
   }
-  $('#salaryGuide > ul li').each((i, el) => {
+  $('#salaryGuide > ul li').each((_, el) => {
     if (!$(el).text().trim()) return;
     salaryInfo.push($(el).text().trim().replace('..css-1nhvvuv{width:1.25rem;height:1.25rem;color:inherit;}', ''))
   })
@@ -40,4 +40,4 @@ async function scrapeDetail(jobId) {
   return result;
 }
 
-module.exports = scrapeDetail;
+export default scrapeJobDetail;
