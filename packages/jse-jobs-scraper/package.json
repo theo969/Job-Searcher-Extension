@@ -1,11 +1,14 @@
 {
   "name": "jse-jobs-scraper",
-  "version": "1.2.5",
+  "version": "1.2.7",
   "main": "index.js",
   "license": "ISC",
+  "scripts": {
+    "build": "tsc",
+    "dev": "nodemon dist/index.js"
+  },
   "dependencies": {
     "cheerio": "^1.0.0-rc.12",
-    "nodemon": "^2.0.20",
     "puppeteer": "^13.7.0",
     "puppeteer-extra": "^3.3.4",
     "puppeteer-extra-plugin-stealth": "^2.11.1"
@@ -16,5 +19,9 @@
     "jse jobs scraper",
     "Job Searcher Extension"
   ],
-  "author": "Sayyid Muhammad A"
+  "author": "Sayyid Muhammad A",
+  "devDependencies": {
+    "nodemon": "^2.0.20",
+    "typescript": "^4.9.3"
+  }
 }
