@@ -11,7 +11,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-Object.defineProperty(exports, "__esModule", { value: true });
 const puppeteer_extra_1 = __importDefault(require("puppeteer-extra"));
 const puppeteer_extra_plugin_stealth_1 = __importDefault(require("puppeteer-extra-plugin-stealth"));
 const scrapeJobDetail_1 = __importDefault(require("./scrapeJobDetail"));
@@ -68,9 +67,4 @@ function scrapeAllJobs(url) {
         return allJobsResult;
     });
 }
-/*
-Just for testing:
-scrapeAllJobs("https://www.indeed.com/jobs?q=Front+end+engineer").then(res => console.log(res));
-scrapeJobDetail("557cf744f8aa815c").then(res => console.log(res)) // the argument that i pass is the value of the job detail id
-*/
-exports.default = { scrapeAllJobs, scrapeJobDetail: scrapeJobDetail_1.default };
+module.exports = { scrapeAllJobs, scrapeJobDetail: scrapeJobDetail_1.default };

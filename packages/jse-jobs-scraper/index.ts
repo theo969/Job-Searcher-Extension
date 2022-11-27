@@ -64,4 +64,4 @@ scrapeAllJobs("https://www.indeed.com/jobs?q=Front+end+engineer").then(res => co
 scrapeJobDetail("557cf744f8aa815c").then(res => console.log(res)) // the argument that i pass is the value of the job detail id
 */
 
-export default { scrapeAllJobs, scrapeJobDetail }; 
+export = { scrapeAllJobs, scrapeJobDetail };
