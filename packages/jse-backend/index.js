@@ -1,5 +1,5 @@
 const express = require('express');
-const { scrapeAllJobs, scrapeDetail } = require('jse-jobs-scraper')
+const { scrapeAllJobs, scrapeJobDetail } = require('jse-jobs-scraper')
 const registerRoute = require('./routes/register')
 const jobController = require('./controller/job');
 const cors = require("cors");
@@ -37,7 +37,7 @@ app.get('/jobsIndeed/', (req, res) => {
 app.get('/jobsIndeed/detail/:jobDetailId', (req, res) => {
   console.log(req.params.jobDetailId)
   console.log("Start to scrape the job detail")
-  scrapeDetail(req.params.jobDetailId).then(res => {
+  scrapeJobDetail(req.params.jobDetailId).then(res => {
     scrapeDetailResult = res;
     console.log("Done!")
   });

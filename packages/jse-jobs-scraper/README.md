@@ -5,9 +5,10 @@ This package will get all jobs in coding role from indeed, linkedin, glassdoor, 
 # How to use it?
 
 1. Install this package on your project by typing `yarn add jse-scrape-jobs` or `npm install jse-scrape-jobs`;
-2. Add this code to your project: `const { scrapeAllJobs } = require('jse-scrape-jobs')` or `import { scrapeAllJobs } from 'scrapeAllJobs'`;
-3. And then write `console.log(scrapeAllJobs( + searchQueryForTheJobs + ));`
+2. Add this code to your project: `const { scrapeAllJobs, scrapeJobDetail } = require('jse-scrape-jobs')` or `import { scrapeAllJobs } from 'scrapeAllJobs'`;
+3. And then write this code to scrape all jobs `console.log(scrapeAllJobs( + searchQueryForTheJobs + ));`
    `// For Example: console.log(scrapeAllJobs("https://www.indeed.com/jobs?q=Front+end+engineer&sc=0kf%3Ajt%28internship%29%3B"));`
+   but if you want to scrape the job detail, you can add this following code:
    And done you have successfully used this package
 
 # Contributing
