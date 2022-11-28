@@ -18,3 +18,5 @@
 
 /packages/jse-jobs-scraper/node_modules
 /packages/jse-jobs-scraper/node_modules
+
+/packages/jse-jobs-scraper/dist

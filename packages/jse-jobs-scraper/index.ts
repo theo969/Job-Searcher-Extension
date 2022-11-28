@@ -29,7 +29,7 @@ async function scrapeAllJobs(url: string): Promise<any> {
           jobTitle: el.querySelector<HTMLElement>('.resultContent div > h2 > a')!.innerText,
           companyName: el.querySelector<HTMLElement>('span.companyName')!.innerText,
           companyLocation: el.querySelector<HTMLElement>("div.companyLocation")!.innerText,
-          postDate: document.querySelector<HTMLElement>("span.date")!.innerText,
+          postDate: el.querySelector<HTMLElement>("span.date")!.innerText,
           salaryInfo,
           snippet: el.querySelector<HTMLElement>("div.job-snippet")!.innerText,
           jobId: el.querySelector("[data-jk]")!.getAttribute("data-jk"),
@@ -64,4 +64,4 @@ scrapeAllJobs("https://www.indeed.com/jobs?q=Front+end+engineer").then(res => co
 scrapeJobDetail("557cf744f8aa815c").then(res => console.log(res)) // the argument that i pass is the value of the job detail id
 */
 
-export = { scrapeAllJobs, scrapeJobDetail };
+export { scrapeAllJobs, scrapeJobDetail };
