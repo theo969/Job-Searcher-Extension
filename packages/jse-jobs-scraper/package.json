@@ -1,6 +1,6 @@
 {
   "name": "jse-jobs-scraper",
-  "version": "1.4.2",
+  "version": "1.4.4",
   "main": "dist/index.js",
   "license": "ISC",
   "scripts": {
