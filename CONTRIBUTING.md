@@ -16,7 +16,6 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 - [I Want To Contribute](#i-want-to-contribute)
   - [Reporting Bugs](#reporting-bugs)
   - [How to create your first PR!](#suggesting-enhancements)
-  - [Improving The Documentation](#improving-the-documentation)
 - [Styleguides](#styleguides)
   - [Commit Messages](#commit-messages)
 
@@ -67,7 +66,9 @@ _Make sure you're inside of the jse-backend folder_ Open it with your terminal a
 
 5. Create new branch by doing this following command `git checkout -b fix-branch`
 
-6. Commit your changes for example:
+6. Commit your changes;
+
+## Commit messages 
 
 - If your changes was bug you can do it like this: ``` git commit -am "Fix: The navbar not responsive in mobile view"
 - If your changes was adding new feature you can do it like this: `git commit -am "Feat: Dark mode button"`
