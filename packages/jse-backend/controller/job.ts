@@ -7,6 +7,7 @@ class JobController {
       return job;
     } catch (error) {
       console.error(error)
+      return;
     }
   }
   async fetchJob() {

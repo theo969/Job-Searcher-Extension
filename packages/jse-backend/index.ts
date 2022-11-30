@@ -26,8 +26,8 @@ function getAllJobs() {
     scrapeAllJobs('https://www.indeed.com/jobs?q=Front+end+engineer&sc=0kf%3Ajt%28internship%29%3B').then(res => {
       result = res;
       jobsFromDB = res;
-      pushAllJobsToDB(res)
       console.log("Done!", res)
+      pushAllJobsToDB(res)
     });
   } catch (err) {
     console.error(err)
@@ -35,16 +35,12 @@ function getAllJobs() {
 }
 
 function pushAllJobsToDB(jobsData: JobsResult[]) {
- try {
   jobsData.forEach(jobData => {
     jobData.forEach((job, index) => {
       jobController.createJob(job)
       console.log(`Pushing job with id ${index}`)
     })
   });
- } catch (e) {
-  console.error(e)
- }
 }
 
 app.use('/register', registerRoute)
