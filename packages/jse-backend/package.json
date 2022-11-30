@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.ts",
-    "migrate": "npx knex migrate:latest --knexfile database/knexfile.js",
+    "migrate": "npx knex migrate:latest --knexfile database/knexfile.ts",
     "new_migration": "npx knex migrate:make init --migrations-directory database/migrations"
   },
   "author": "Sayyid Muhammad A",
