@@ -42,11 +42,11 @@ function pushAllJobsToDB(jobsData: JobsResult[]) {
     })
   });
 }
+getAllJobs();
 
 app.use('/register', registerRoute)
 
 app.get('/jobsIndeed/', (req, res) => {
-  getAllJobs();
   res.send(result.length !== 0 ? result : jobsFromDB);
 });
 

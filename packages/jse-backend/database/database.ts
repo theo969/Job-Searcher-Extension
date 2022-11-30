@@ -1,5 +1,8 @@
 import knex from 'knex';
 import knexfile from './knexfile';
 
-const db = knex(knexfile.development);
-export default db;
+function database(path: string) {
+  const db = knex(knexfile(path).development);
+  return db;
+}
+export default database;
