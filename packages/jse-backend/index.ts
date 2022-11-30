@@ -19,17 +19,32 @@ function getAllJobs() {
   try {
     jobController.fetchJob().then(res => {
       if(!res) return;
-      jobsFromDB = res.filter(el => el.id !== undefined && el.jobTitle !== '');
+      jobsFromDB = res;
       console.log("Successfully getting data from DB");
     });
   
     scrapeAllJobs('https://www.indeed.com/jobs?q=Front+end+engineer&sc=0kf%3Ajt%28internship%29%3B').then(res => {
       result = res;
+      jobsFromDB = res;
+      pushAllJobsToDB(res)
       console.log("Done!", res)
     });
   } catch (err) {
     console.error(err)
   }
+}
+
+function pushAllJobsToDB(jobsData: JobsResult[]) {
+ try {
+  jobsData.forEach(jobData => {
+    jobData.forEach((job, index) => {
+      jobController.createJob(job)
+      console.log(`Pushing job with id ${index}`)
+    })
+  });
+ } catch (e) {
+  console.error(e)
+ }
 }
 
 app.use('/register', registerRoute)
