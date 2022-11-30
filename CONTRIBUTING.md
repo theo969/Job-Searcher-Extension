@@ -68,9 +68,9 @@ _Make sure you're inside of the jse-backend folder_ Open it with your terminal a
 
 6. Commit your changes and push to fix-branch and make new PR!
 
-## Commit messages 
+## Commit message
 
-- If your changes was bug you can do it like this: ``` git commit -am "Fix: The navbar not responsive in mobile view"
+- If your changes was bug you can do it like this: ``` git commit -am "Fix: The navbar not responsive in mobile view" ```
 - If your changes was adding new feature you can do it like this: `git commit -am "Feat: Dark mode button"`
 - If your changes was improving the Doc you can do it like this: `git commit -am "Docs: Something was missing"`
 
