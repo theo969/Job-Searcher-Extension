@@ -66,7 +66,7 @@ _Make sure you're inside of the jse-backend folder_ Open it with your terminal a
 
 5. Create new branch by doing this following command `git checkout -b fix-branch`
 
-6. Commit your changes;
+6. Commit your changes and push to fix-branch and make new PR!
 
 ## Commit messages 
 
