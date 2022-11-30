@@ -5,7 +5,12 @@
  */
 import dotenv from 'dotenv';
 dotenv.config();
-export default {
+
+interface IKnexConfig {
+  [key: string]: import("knex").Knex.Config;
+}
+
+const configs: IKnexConfig = {
   development: {
     client: 'postgresql',
     connection: {
@@ -23,3 +28,5 @@ export default {
     }
   },
 };
+
+export default configs;
