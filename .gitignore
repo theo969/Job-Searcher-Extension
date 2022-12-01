@@ -13,6 +13,8 @@
 /packages/jse-frontend/yarn.lock
 /packages/jse-frontend/package-lock.json
 
+/packages/jse-backend/build
+
 /packages/jse-jobs-scraper/yarn.lock
 /packages/jse-jobs-scraper/package-lock.json
 
