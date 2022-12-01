@@ -1,5 +1,5 @@
 {
-  "name": "jse-jobs-scraper",
+  "name": "@sayyidmuhammada/jse-jobs-scraper",
   "version": "1.4.7",
   "main": "dist/index.js",
   "license": "ISC",
@@ -26,5 +26,8 @@
     "@types/node": "^18.11.9",
     "nodemon": "^2.0.20",
     "typescript": "^4.9.3"
+  },
+  "repository": {
+    "url": "https://github.com/SayyidMuhammadA/Job-Searcher-Extension/tree/main/packages/jse-jobs-scraper"
   }
 }
