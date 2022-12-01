@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "nodemon index.ts",
     "migrate": "npx knex migrate:latest --knexfile database/knexfile.ts",
-    "new_migration": "npx knex migrate:make init --migrations-directory database/migrations"
+    "new_migration": "npx knex migrate:make init --migrations-directory database/migrations",
+    "build": "webpack",
+    "start": "nodemon build/index.js"
   },
   "author": "Sayyid Muhammad A",
   "license": "MIT",
@@ -21,12 +23,16 @@
     "jsonwebtoken": "^8.5.1",
     "knex": "^2.3.0",
     "nodemon": "^2.0.20",
-    "pg": "^8.8.0"
+    "pg": "^8.8.0",
+    "ts-loader": "^9.4.2",
+    "webpack": "^5.75.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.14",
     "ts-node": "^10.9.1",
-    "typescript": "^4.9.3"
+    "typescript": "^4.9.3",
+    "webpack-cli": "^5.0.0",
+    "webpack-node-externals": "^3.0.0"
   }
 }

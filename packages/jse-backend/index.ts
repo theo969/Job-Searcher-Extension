@@ -4,7 +4,7 @@ import { scrapeAllJobs, scrapeJobDetail } from 'jse-jobs-scraper';
 import registerRoute from './routes/register';
 import jobController from './controller/job';
 import cors from "cors";
-const PORT = 8080;
+const PORT = 3001;
 const app = express();
 
 app.use(express.json())
