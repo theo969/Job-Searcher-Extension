@@ -23,12 +23,7 @@ A clear and concise description of what you expected to happen.
 **Screenshots or Video(Optional)**
 If applicable, add screenshots to help explain your problem.
 
-**Desktop (please complete the following information):**
- - OS: [e.g. Windows]
- - Browser [e.g. chrome, safari]
-
-**Smartphone (please complete the following information):**
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
-
 ### Version of the app:
+### Device(optional): 
+### Browser(optional):
+### OS: 
