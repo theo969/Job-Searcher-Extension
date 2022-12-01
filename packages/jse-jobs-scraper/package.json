@@ -1,6 +1,6 @@
 {
-  "name": "@sayyidmuhammada/jse-jobs-scraper",
-  "version": "1.4.7",
+  "name": "jse-jobs-scraper",
+  "version": "1.4.8",
   "main": "dist/index.js",
   "license": "ISC",
   "scripts": {
