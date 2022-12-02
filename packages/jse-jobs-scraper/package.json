@@ -1,6 +1,6 @@
 {
   "name": "@sayyidmuhammada/jse-jobs-scraper",
-  "version": "1.4.9",
+  "version": "1.5.2",
   "main": "dist/index.js",
   "license": "ISC",
   "scripts": {
@@ -31,6 +31,6 @@
     "url": "https://github.com/SayyidMuhammadA/Job-Searcher-Extension/tree/main/packages/jse-jobs-scraper"
   },
   "publishConfig": {
-    "sayyidmuhammada:registry": "https://npm.pkg.github.com"
+    "@sayyidmuhammada:registry": "https://npm.pkg.github.com"
   }
 }
