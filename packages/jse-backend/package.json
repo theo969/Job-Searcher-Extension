@@ -1,13 +1,13 @@
 {
   "name": "jse-server",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "All jobs that has been scraped will be sent to this server",
-  "main": "index.js",
+  "main": "build/index.js",
   "scripts": {
     "dev": "nodemon index.ts",
     "migrate": "npx knex migrate:latest --knexfile database/knexfile.ts",
     "new_migration": "npx knex migrate:make init --migrations-directory database/migrations",
-    "build": "webpack",
+    "build": "rm -rf build && webpack",
     "start": "nodemon build/index.js"
   },
   "author": "Sayyid Muhammad A",
@@ -19,7 +19,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "jse-jobs-scraper": "^1.4.7",
+    "jse-jobs-scraper": "^1.5.0",
     "jsonwebtoken": "^8.5.1",
     "knex": "^2.3.0",
     "nodemon": "^2.0.20",
