@@ -2,6 +2,10 @@ on:
   push:
     branches: 
       - main
+      
+defaults:
+ run:
+  working-directory: ./packages/jse-jobs-scraper
 
 jobs: 
   publishToNpmAndYarn: 
@@ -10,7 +14,6 @@ jobs:
     steps:
       - name: 📚 checkout
         uses: actions/checkout@v3
-        working-directory: ../../packages/jse-jobs-scraper
       - name: 🟢 setup node
         uses: actions/setup-node@v3
         with: 
