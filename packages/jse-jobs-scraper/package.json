@@ -29,8 +29,5 @@
   },
   "repository": {
     "url": "https://github.com/SayyidMuhammadA/Job-Searcher-Extension/tree/main/packages/jse-jobs-scraper"
-  },
-  "publishConfig": {
-    "@sayyidmuhammada:registry": "https://npm.pkg.github.com"
   }
 }

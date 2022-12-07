@@ -20,6 +20,8 @@ node_modules
 /packages/jse-jobs-scraper/yarn.lock
 /packages/jse-jobs-scraper/package-lock.json
 
+/packages/jse-jobs-scraper/.npmrc
+
 /packages/jse-jobs-scraper/node_modules
 /packages/jse-jobs-scraper/node_modules
 
