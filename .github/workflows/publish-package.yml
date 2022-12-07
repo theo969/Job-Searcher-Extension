@@ -8,7 +8,7 @@ defaults:
   working-directory: ./packages/jse-jobs-scraper
 
 jobs: 
-  publishToNpmAndYarn: 
+  publish: 
     name: 🚀 publish jse-jobs-scraper to npm & yarn
     runs-on: ubuntu-latest
     steps:
@@ -29,20 +29,3 @@ jobs:
         run: yarn publish
         env: 
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-  publishToGithub: 
-    name: 🚀 publish jse-jobs-scraper to github
-    runs-on: ubuntu-latest
-    steps:
-      - name: 📚 checkout
-        uses: actions/checkout@v3
-      - name: 🟢 setup node
-        uses: actions/setup-node@v3
-        with: 
-          node-version: 16
-          registry-url: https://npm.pkg.github.com
-      - name: creating new version for github...
-        run: npm version minor
-      - name: 🚀 publish package into github
-        run: npm publish --access=public
-        env: 
-          GITHUB_AUTH_TOKEN: ${{ secrets.PACKAGE_AUTH_TOKEN }}
