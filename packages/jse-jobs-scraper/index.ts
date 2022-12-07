@@ -1,4 +1,4 @@
-import { Page } from 'puppeteer';
+import { Page, executablePath } from 'puppeteer';
 import puppeteer from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 import scrapeJobDetail from './scrapeJobDetail';
@@ -8,9 +8,9 @@ puppeteer.use(StealthPlugin());
 let allJobsResult: AllJobsResult[] = [];
 async function scrapeAllJobs(url: string): Promise<any> {
   console.log("\u2714 ", url);
-  const browser = await puppeteer.launch({ headless: true });
+  const browser = await puppeteer.launch({headless: true, args: ['--no-sandbox',], executablePath: executablePath()});
   const page = await browser.newPage();
-  let maxPages = 10
+  let maxPages = 10;
   await page.goto(url, { waitUntil: "domcontentloaded" });
 
   const getAllJobs = async (page : Page) => {

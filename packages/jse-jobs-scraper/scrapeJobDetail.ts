@@ -1,11 +1,13 @@
 import puppeteer from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 import cheerio from 'cheerio';
+import { executablePath } from 'puppeteer';
 puppeteer.use(StealthPlugin());
 
 async function scrapeJobDetail(jobId: any) {
-  const browser = await puppeteer.launch({ headless: true });
+  const browser = await puppeteer.launch({headless: true, args: ['--no-sandbox',], executablePath: executablePath()});
   const page = await browser.newPage();
+
   await page.goto(`https://www.indeed.com/viewjob?jk=${jobId}`, { waitUntil: "domcontentloaded" });
 
   const htmlCode = await page.evaluate(() => document.querySelector('*')!.outerHTML)
