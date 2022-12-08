@@ -15,10 +15,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const puppeteer_extra_1 = __importDefault(require("puppeteer-extra"));
 const puppeteer_extra_plugin_stealth_1 = __importDefault(require("puppeteer-extra-plugin-stealth"));
 const cheerio_1 = __importDefault(require("cheerio"));
+const puppeteer_1 = require("puppeteer");
 puppeteer_extra_1.default.use((0, puppeteer_extra_plugin_stealth_1.default)());
 function scrapeJobDetail(jobId) {
     return __awaiter(this, void 0, void 0, function* () {
-        const browser = yield puppeteer_extra_1.default.launch({ headless: true });
+        const browser = yield puppeteer_extra_1.default.launch({ headless: true, args: ['--no-sandbox',], executablePath: (0, puppeteer_1.executablePath)() });
         const page = yield browser.newPage();
         yield page.goto(`https://www.indeed.com/viewjob?jk=${jobId}`, { waitUntil: "domcontentloaded" });
         const htmlCode = yield page.evaluate(() => document.querySelector('*').outerHTML);

@@ -10,7 +10,7 @@ async function scrapeAllJobs(url: string): Promise<any> {
   console.log("\u2714 ", url);
   const browser = await puppeteer.launch({headless: true, args: ['--no-sandbox',], executablePath: executablePath()});
   const page = await browser.newPage();
-  let maxPages = 10;
+  let maxPages = 2;
   await page.goto(url, { waitUntil: "domcontentloaded" });
 
   const getAllJobs = async (page : Page) => {
