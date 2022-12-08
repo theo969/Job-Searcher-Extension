@@ -23,7 +23,7 @@ let allJobsResult = [];
 function scrapeAllJobs(url) {
     return __awaiter(this, void 0, void 0, function* () {
         console.log("\u2714 ", url);
-        const browser = yield puppeteer_extra_1.default.launch({ headless: true, executablePath: (0, puppeteer_1.executablePath)() });
+        const browser = yield puppeteer_extra_1.default.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'], executablePath: (0, puppeteer_1.executablePath)() });
         const page = yield browser.newPage();
         let maxPages = 10;
         yield page.goto(url, { waitUntil: "domcontentloaded" });
