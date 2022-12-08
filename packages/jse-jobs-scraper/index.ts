@@ -61,9 +61,9 @@ async function scrapeAllJobs(url: string): Promise<any> {
   return allJobsResult;
 }
 
+scrapeAllJobs("https://www.indeed.com/jobs?q=Front+end+engineer").then(res => console.log(res));
 /*
 Just for testing:
-scrapeAllJobs("https://www.indeed.com/jobs?q=Front+end+engineer").then(res => console.log(res));
 scrapeJobDetail("557cf744f8aa815c").then(res => console.log(res)) // the argument that i pass is the value of the job detail id
 */
 

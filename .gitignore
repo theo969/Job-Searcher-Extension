@@ -22,8 +22,6 @@ node_modules
 
 /packages/jse-jobs-scraper/.npmrc
 
-/packages/jse-jobs-scraper/.cache/
-
 /packages/jse-jobs-scraper/node_modules
 /packages/jse-jobs-scraper/node_modules
 
