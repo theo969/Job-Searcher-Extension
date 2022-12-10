@@ -8,10 +8,14 @@ puppeteer.use(StealthPlugin());
 let allJobsResult: AllJobsResult[] = [];
 async function scrapeAllJobs(url: string): Promise<any> {
   console.log("\u2714 ", url);
-  const browser = await puppeteer.launch({headless: true,
+  const browser = await puppeteer.launch({
+    headless: true,
+    executablePath: executablePath(),
     args: [
-    '--no-sandbox',
-  ], executablePath: executablePath()});
+      '--no-sandbox',
+      '--disable-gpu',
+    ]
+  });
   const page = await browser.newPage();
   let maxPages = 10;
   await page.goto(url, { waitUntil: "domcontentloaded" });
@@ -61,9 +65,9 @@ async function scrapeAllJobs(url: string): Promise<any> {
   return allJobsResult;
 }
 
-scrapeAllJobs("https://www.indeed.com/jobs?q=Front+end+engineer").then(res => console.log(res));
 /*
 Just for testing:
+scrapeAllJobs("https://www.indeed.com/jobs?q=Front+end+engineer").then(res => console.log(res));
 scrapeJobDetail("557cf744f8aa815c").then(res => console.log(res)) // the argument that i pass is the value of the job detail id
 */
 
